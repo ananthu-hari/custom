@@ -2,8 +2,8 @@ mymodule.simplecontent:
   path: '/mycustompath'
   defaults:
     _controller: '\Drupal\mymodule\Controller\FirstController::simpleContent'
-    _title: 'Simplicity is the ultimate sophistication'
-  requirements:
+    _title: 'Simplicty is the sophiscation'
+  requirements: 
     _permission: 'access content'
 
 mymodule.variablecontent:
@@ -11,5 +11,5 @@ mymodule.variablecontent:
   defaults:
     _controller: '\Drupal\mymodule\Controller\FirstController::variableContent'
     _title: 'Dynamic Greeting'
-  requirements:
+  requirements: 
     _permission: 'access content'
