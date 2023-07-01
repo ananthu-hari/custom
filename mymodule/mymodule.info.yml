@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 core_version_requirement: ^10
 name: 'My first custom Drupal module'
 type: module
 description: 'Code to spark my module development understanding'
 package: 'Acquia Module Dev Course'
+=======
+name: 'My first custom Drupal module'
+type: module
+core_version_requirement: ^10
+description: 'Code to spark'
+package: 'Acquia module development course'
+>>>>>>> Remote-floatsys/main

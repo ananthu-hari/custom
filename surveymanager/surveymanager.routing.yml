@@ -31,6 +31,7 @@ surveymanager.surveyor_dashboard:
   requirements:
     _permission: 'access content'
 
+<<<<<<< HEAD
 surveymanager.certificate_form:
   path: '/surveymanager/certificate'
   defaults:
@@ -38,3 +39,21 @@ surveymanager.certificate_form:
     _title: 'Certificate Form'
   requirements:
     _permission: 'access content'
+=======
+surveymanager.document_type_form:
+  path: '/surveymanager/documenttype'
+  defaults:
+    _form: '\Drupal\surveymanager\Form\DocumentTypeForm'
+    _title: 'Document Type Form'
+  requirements:
+    _permission: 'access content'
+
+survey_form.form:
+  path: '/surveymanager/surveytypes'
+  defaults:
+    _form: '\Drupal\surveymanager\Form\SurveyForm'
+    _title: 'Survey Form'
+  requirements:
+    _permission: 'access content'
+
+>>>>>>> Remote-floatsys/main

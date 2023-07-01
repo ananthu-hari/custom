@@ -97,4 +97,8 @@ class RSVPForm extends FormBase{
 
       }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> Remote-floatsys/main

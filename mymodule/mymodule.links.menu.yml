@@ -3,4 +3,8 @@ mymodule.simplecontentpage:
   description: Link to the simplecontent() method
   route_name: mymodule.simplecontent
   weight: 10
+<<<<<<< HEAD
   menu_name: main
+=======
+  menu_name: main
+>>>>>>> Remote-floatsys/main

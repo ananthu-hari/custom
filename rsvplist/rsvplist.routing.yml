@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> Remote-floatsys/main
 rsvplist.formdemo:
   path: '/rsvplistdemo'
   defaults:
     _form: '\Drupal\rsvplist\Form\RSVPForm'
     _title: 'RSVP to this Event(demo)'
   requirements:
+<<<<<<< HEAD
     _permission: 'access content'
+=======
+    _permission: 'access content'
+  
+>>>>>>> Remote-floatsys/main
