@@ -1,0 +1,32 @@
+surveymanager.login_form:
+  path: '/surveymanager/login'
+  defaults:
+    _form: '\Drupal\surveymanager\Form\LoginForm'
+    _title: 'Login Form'
+  requirements:
+    _permission: 'access content'
+
+
+surveymanager.admin_dashboard:
+  path: '/surveymanager/admin/index'
+  defaults:
+    _controller: '\Drupal\surveymanager\Controller\AdminController::dashboard'
+    _title: 'Main Page'
+  requirements:
+    _permission: 'access content'
+
+surveymanager.admin_list_users:
+  path: '/surveymanager/admin/users/list'
+  defaults:
+    _controller: '\Drupal\surveymanager\Controller\AdminController::list_users'
+    _title: 'Main Page'
+  requirements:
+    _permission: 'access content'
+
+surveymanager.surveyor_dashboard:
+  path: '/surveymanager/surveyor/index'
+  defaults:
+    _controller: '\Drupal\surveymanager\Controller\SurveyController::dashboard'
+    _title: 'Main Page'
+  requirements:
+    _permission: 'access content'
