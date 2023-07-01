@@ -59,7 +59,7 @@ class CertificateForm extends FormBase {
       ->execute();
 
     // Display a success message.
-    drupal_set_message($this->t('Certificate saved successfully.'));
+    \Drupal::messenger()->addMessage('Certificate has been added.', 'status');
   }
 
 }
