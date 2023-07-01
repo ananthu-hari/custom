@@ -1,0 +1,27 @@
+<table id="usertable" class="table table-striped" style="width:100%">
+        <thead>
+    <tr>
+      {% for column in header %}
+        <th>{{ column }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in rows %}
+      <tr>
+        <td>{{ row.id }}</td>
+        <td>{{ row.name }}</td>
+        <td>{{ row.mail }}</td>
+        <td>{{ row.uname}}</td> <th>{{ column }}</th>
+      {% endfor %}
+      </tr>
+    {% endfor %}
+  </tbody>
+        <tfoot>
+            <tr>
+               {% for column in header %}
+        <th>{{ column }}</th>
+      {% endfor %}
+            </tr>
+        </tfoot>
+    </table>
