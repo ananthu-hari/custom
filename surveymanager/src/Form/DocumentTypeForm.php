@@ -43,7 +43,7 @@ class DocumentTypeForm extends FormBase {
       ->execute();
 
     // Display a success message.
-    drupal_set_message($this->t('Document type saved successfully.'));
+    \Drupal::messenger()->addMessage('Certificate has been added.', 'status');
   }
 
 }
