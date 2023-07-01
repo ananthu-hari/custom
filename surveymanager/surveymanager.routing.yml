@@ -30,3 +30,12 @@ surveymanager.surveyor_dashboard:
     _title: 'Main Page'
   requirements:
     _permission: 'access content'
+
+survey_form.form:
+  path: '/surveymanager/surveytypes'
+  defaults:
+    _form: '\Drupal\surveymanager\Form\SurveyForm'
+    _title: 'Survey Form'
+  requirements:
+    _permission: 'access content'
+

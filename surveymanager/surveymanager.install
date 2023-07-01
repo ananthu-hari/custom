@@ -75,6 +75,7 @@ function surveymanager_schema(){
     );
 
     // Supporting document for a job
+    
     $schema['sm_job_support_documents'] = array(
         'description' => 'Stores job support document details',
         'fields' => array(
@@ -108,6 +109,7 @@ function surveymanager_schema(){
     );
     
     // Certificates to be produced from  a job
+
     $schema['sm_job_certificates'] = array(
         'description' => 'Stores job certificates details',
         'fields' => array(
@@ -156,6 +158,7 @@ function surveymanager_schema(){
     );
     
     // recommendations from a job
+
     $schema['sm_recommendations'] = array(
         'description' => 'Stores basic certificate info such as type,code ',
         'fields' => array(
@@ -196,6 +199,7 @@ function surveymanager_schema(){
 
 
     //Support document types        
+
     $schema['sm_support_document_types'] = array(
         'description' => 'Stores documents types that support a job',
         'fields' => array(
@@ -220,6 +224,7 @@ function surveymanager_schema(){
 
 
     // certificate types and its template
+
     $schema['sm_certificates'] = array(
         'description' => 'Stores basic certificate info such as type,code ',
         'fields' => array(
@@ -288,6 +293,7 @@ function surveymanager_schema(){
     );
 
     //survey types and its code 
+
     $schema['sm_survey_types'] = array(
         'description' => 'Stores user approval types details',
         'fields' => array(
