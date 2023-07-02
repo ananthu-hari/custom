@@ -85,7 +85,7 @@ class LoginForm extends FormBase {
       user_login_finalize($user);
 
       // Check if the user has the 'surveyadmin' role.
-      if ($user->hasRole('surveyadmin')) {
+      if ($user->hasRole('Survey Administrator')) {
         $form_state->setRedirect('surveymanager.admin_dashboard');
       }
       else {
