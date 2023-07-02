@@ -93,7 +93,7 @@ class JobsForm extends FormBase {
     $messenger = \Drupal::messenger();
     $messenger->addMessage($this->t('The job has been submitted successfully.'));
 
-    //$form_state->setRedirectUrl(Url::fromRoute('<front>'));
+    $form_state->setRedirectUrl(Url::fromRoute('surveymanger.list_jobs'));
   }
 
 }

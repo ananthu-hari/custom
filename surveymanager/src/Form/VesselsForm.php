@@ -5,6 +5,7 @@ namespace Drupal\surveymanager\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Database\Database;
+use Drupal\Core\Url;
 
 /**
  * Provides a Vessels form.
@@ -65,6 +66,8 @@ class VesselsForm extends FormBase {
 
     // Provide a success message.
     $this->messenger()->addMessage($this->t('Vessel details have been saved successfully.'));
+
+    $form_state->setRedirectUrl(Url::fromRoute('surveymanager.list_vessels'));
   }
 
 }

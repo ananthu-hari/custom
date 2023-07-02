@@ -126,6 +126,74 @@ class AdminController extends ControllerBase {
   
   }
 
+  public function vessel_list()
+  {
+    $query = $this->database->select('sm_vessels', 'vessels')
+      ->fields('vessels');
+    $result =$query->execute();
+
+    $header = [
+      'ID',
+      'Vessel Name',
+      'IMO Number',
+    ];
+    $rows = [];
+    foreach ($result as $record) {
+      $rows[] = [
+        'id' => $record->id,
+        'name' => $record->name,
+        'imo' => $record->imo,
+      ];
+    }
+  
+    
+    $template= [
+      '#theme' => 'surveymanager_jobs_table',
+      '#header' => $header,
+      '#rows' => $rows
+      
+    ];
+    $template['#attached']['library'][] = 'surveymanager/main_library';
+    return $template;  
+  
+  }
+
+  public function job_list()
+  {
+    $query = $this->database->select('sm_jobs', 'jobs')
+      ->fields('jobs');
+    $result =$query->execute();
+
+    $header = [
+      'ID',
+      'Job Number',
+      'Surveyor User Name',
+      'Vessel ID',
+      'Status',
+    ];
+    $rows = [];
+    foreach ($result as $record) {
+      $rows[] = [
+        'id' => $record->id,
+        'number' => $record->number,
+        'surveyor_uname' => $record->surveyor_uname,
+        'vessel_id' => $record->vessel_id,
+        'status' => $record->status,
+      ];
+    }
+  
+    
+    $template= [
+      '#theme' => 'surveymanager_jobs_table',
+      '#header' => $header,
+      '#rows' => $rows
+      
+    ];
+    $template['#attached']['library'][] = 'surveymanager/main_library';
+    return $template;  
+  
+  }
+
   public function survey_types_table()
   {
     $query = $this->database->select('sm_survey_types', 's')
