@@ -55,14 +55,6 @@ survey_form.form:
   requirements:
     _permission: 'access content'
 
-surveymanager.VesselForm:
-  path: '/surveymanager/VesselForm'
-  defaults:
-    _form: '\Drupal\surveymanager\Form\VesselForm'
-    _title: 'Vessel Form'
-  requirements:
-    _permission: 'access content'
-
 surveymanager.survey_type_form:
   path: '/surveymanager/surveytype'
   defaults:
