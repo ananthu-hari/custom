@@ -86,11 +86,12 @@ class LoginForm extends FormBase {
 
       // Check if the user has the 'surveyadmin' role.
       if ($user->hasRole('Survey Administrator')) {
-        $form_state->setRedirect('surveymanager.admin_dashboard');
+        //To redirect to admin dashboard if logined as Survey Administrator
+        //$form_state->setRedirectUrl(Url::fromRoute('surveymanager.admin_login'));
       }
       else {
         // Redirect to a different page if the user is not a surveyadmin.
-        $form_state->setRedirect('surveymanager.admin_list_users');
+        $form_state->setRedirectUrl(Url::fromRoute('surveymanager.admin_list_users'));
       }
     }
     else {

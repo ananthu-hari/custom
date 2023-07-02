@@ -6,7 +6,7 @@ surveymanager.login_form:
   requirements:
     _permission: 'access content'
 
-#surveymanager.admin_dashboard_form:
+#surveymanager.admin_login:
 #  path: '/surveymanager/admin/dashboard'
 #  defaults:
 #    _form: '\Drupal\surveymanager\Form\AdminDashboard'
@@ -174,7 +174,7 @@ surveymanager.jobs_form:
   requirements:
     _permission: 'access content'
 
-surveymanager.vessel_:
+surveymanager.vessel:
   path: '/surveymanager/vesselform'
   defaults:
     _form: '\Drupal\surveymanager\Form\VesselsForm'
