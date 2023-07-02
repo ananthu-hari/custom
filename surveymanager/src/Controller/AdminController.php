@@ -89,36 +89,31 @@ class AdminController extends ControllerBase {
   public function list_survey_types()
   {
     
-    $result=$this->getUsersByRole("surveyor");
-    //print_r($result);
-    
+    $query = \Drupal::database()
+      ->select('sm_survey_types', 'sst')
+      ->fields('sst', ['name', 'code']);
+    $result = $query->execute();
+
     $header = [
       'Survey Name',
       'Survey Code',
     ];
     $rows = [];
+
     foreach ($result as $record) {
-      $user = User::load($record[0]);
-      $uname=$user->get('name')->value;
-      $profile=$this->read_user_profile_by_uname($uname);
-      $mail=$user->getEmail();
       $rows[] = [
-        'id' => $record[0],
-        'name' => $profile[0]->name,
-        'mail' => $mail,
-        'uname' => $uname,
+        'name' => $record->name,
+        'code' => $record->code,
       ];
     }
   
-    
     $template= [
-      '#theme' => 'surveymanager_jobs_table',
+      '#theme' => 'surveymanager_survey_types_table',
       '#header' => $header,
       '#rows' => $rows,
     ];
     $template['#attached']['library'][] = 'surveymanager/main_library';
     return $template;  
-  
   }
 
   public function dashboard()
