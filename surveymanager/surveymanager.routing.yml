@@ -71,10 +71,10 @@ surveymanager.survey_type_form:
   requirements:
     _permission: 'access content'
   
-surveymanager.list_surveytypes:
-  path: '/surveymanager/surveytypes/list'
-  defaults:
-    _controller: '\Drupal\surveymanager\Controller\AdminController::list_survey_types'
-    _title: 'Survey Types'
-  requirements:
-    _permission: 'access content'
+  #surveymanager.list_surveytypes:
+  #path: '/surveymanager/surveytypes/list'
+  #defaults:
+   # _controller: '\Drupal\surveymanager\Controller\AdminController::list_survey_types'
+    #_title: 'Survey Types'
+  #requirements:
+   # _permission: 'access content'
