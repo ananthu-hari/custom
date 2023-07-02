@@ -127,3 +127,11 @@ surveymanager.job_support_documents_form:
     _title: 'Job Support Document Form'
   requirements:
     _permission: 'access content'  
+
+surveymanager.user_survey_types_form:
+  path: '/surveymanager/usersurveytype'
+  defaults:
+    _form: '\Drupal\surveymanager\Form\UserSurveyTypesForm'
+    _title: 'User Survey Types Form'
+  requirements:
+    _permission: 'access content'
