@@ -29,7 +29,7 @@ function surveymanager_theme($existing, $type, $theme, $path) {
         'header' => NULL,
         'rows' => NULL
       ],
-      'template' => 'surveymanager-survey-types',
+      'template' => 'surveymanager-survey-types-table',
     ],
   ]; 
 }

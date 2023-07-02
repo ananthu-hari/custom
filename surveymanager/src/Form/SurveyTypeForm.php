@@ -62,7 +62,7 @@
             ->addStatus($this->t('Survey Type has been added.'));
 
         // Redirect to a different page after the form submission.
-        $form_state->setRedirect('surveymanager.list_survey_types');
+        $form_state->setRedirect('surveymanager.list_surveytypes');
     }
 
 }
