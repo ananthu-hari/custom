@@ -5,7 +5,9 @@ namespace Drupal\surveymanager\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Database\Connection;
 
 /**
  * Job Certificates form.
@@ -20,13 +22,33 @@ class JobCertificatesForm extends FormBase {
   protected $entityTypeManager;
 
   /**
+   * The messenger service.
+   *
+   * @var \Drupal\Core\Messenger\MessengerInterface
+   */
+  protected $messenger;
+
+  /**
+   * The database connection.
+   *
+   * @var \Drupal\Core\Database\Connection
+   */
+  protected $database;
+
+  /**
    * JobCertificatesForm constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager.
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
+   *   The messenger service.
+   * @param \Drupal\Core\Database\Connection $database
+   *   The database connection.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, MessengerInterface $messenger, Connection $database) {
     $this->entityTypeManager = $entity_type_manager;
+    $this->messenger = $messenger;
+    $this->database = $database;
   }
 
   /**
@@ -34,7 +56,9 @@ class JobCertificatesForm extends FormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('entity_type.manager')
+      $container->get('entity_type.manager'),
+      $container->get('messenger'),
+      $container->get('database')
     );
   }
 
@@ -50,16 +74,16 @@ class JobCertificatesForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state): array {
     $form['job_id'] = [
-      '#type' => 'entity_autocomplete',
+      '#type' => 'select',
       '#title' => $this->t('Job ID'),
-      '#target_type' => 'job_entity', // Replace 'job_entity' with the correct entity type for jobs.
+      '#options' => $this->getJobOptions(),
       '#required' => TRUE,
     ];
 
     $form['certificate_id'] = [
-      '#type' => 'entity_autocomplete',
+      '#type' => 'select',
       '#title' => $this->t('Certificate ID'),
-      '#target_type' => 'certificate_entity', // Replace 'certificate_entity' with the correct entity type for certificates.
+      '#options' => $this->getCertificateOptions(),
       '#required' => TRUE,
     ];
 
@@ -99,7 +123,56 @@ class JobCertificatesForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    // Handle form submission.
+    $jobId = $form_state->getValue('job_id');
+    $certificateId = $form_state->getValue('certificate_id');
+    $number = $form_state->getValue('number');
+    $issuedOn = $form_state->getValue('issued_on');
+    $expireOn = $form_state->getValue('expire_on');
+    $url = $form_state->getValue('url');
+
+    // Insert the form values into the 'sm_job_certificates' table.
+    $this->database->insert('sm_job_certificates')
+      ->fields([
+        'job_id' => $jobId,
+        'certificate_id' => $certificateId,
+        'number' => $number,
+        'issued_on' => $issuedOn,
+        'expire_on' => $expireOn,
+        'url' => $url,
+      ])
+      ->execute();
+
+    $this->messenger->addMessage($this->t('Form submitted successfully.'));
+  }
+
+  /**
+   * Retrieves job options for the select field.
+   *
+   * @return array
+   *   An array of job options.
+   */
+  private function getJobOptions() {
+    $jobIds = $this->database->select('sm_jobs', 'j')
+      ->fields('j', ['id'])
+      ->execute()
+      ->fetchCol();
+
+    return array_combine($jobIds, $jobIds);
+  }
+
+  /**
+   * Retrieves certificate options for the select field.
+   *
+   * @return array
+   *   An array of certificate options.
+   */
+  private function getCertificateOptions() {
+    $certificateIds = $this->database->select('sm_certificates', 'c')
+      ->fields('c', ['id'])
+      ->execute()
+      ->fetchCol();
+
+    return array_combine($certificateIds, $certificateIds);
   }
 
 }
