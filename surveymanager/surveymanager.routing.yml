@@ -55,10 +55,10 @@ survey_form.form:
   requirements:
     _permission: 'access content'
 
-surveymanager.sm_vessels:
-  path: '/surveymanager/smvessel'
+surveymanager.VesselForm:
+  path: '/surveymanager/VesselForm'
   defaults:
-    _form: '\Drupal\surveymanager\Form\smVessel'
+    _form: '\Drupal\surveymanager\Form\VesselForm'
     _title: 'Vessel Form'
   requirements:
     _permission: 'access content'
