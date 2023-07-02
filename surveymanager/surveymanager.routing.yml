@@ -6,12 +6,19 @@ surveymanager.login_form:
   requirements:
     _permission: 'access content'
 
+#surveymanager.admin_dashboard_form:
+#  path: '/surveymanager/admin/dashboard'
+#  defaults:
+#    _form: '\Drupal\surveymanager\Form\AdminDashboard'
+#    _title: 'Admin Dashboard'
+#  requirements:
+#    _permission: 'access content'
 
 surveymanager.admin_dashboard:
   path: '/surveymanager/admin/index'
   defaults:
     _controller: '\Drupal\surveymanager\Controller\AdminController::dashboard'
-    _title: 'Admin Dashboard'
+    _title: 'Main Page'
   requirements:
     _permission: 'access content'
 

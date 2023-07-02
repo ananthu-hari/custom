@@ -83,7 +83,15 @@ class LoginForm extends FormBase {
     if ($uid) {
       $user = User::load($uid);
       user_login_finalize($user);
-      $form_state->setRedirect('surveymanager.admin_list_users');
+
+      // Check if the user has the 'surveyadmin' role.
+      if ($user->hasRole('surveyadmin')) {
+        $form_state->setRedirect('surveymanager.admin_dashboard');
+      }
+      else {
+        // Redirect to a different page if the user is not a surveyadmin.
+        $form_state->setRedirect('surveymanager.admin_list_users');
+      }
     }
     else {
       \Drupal::messenger()->addError(t('Invalid credentials'));

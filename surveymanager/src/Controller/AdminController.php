@@ -187,10 +187,10 @@ class AdminController extends ControllerBase {
     return $template;
   }
 */
-
+  
   public function dashboard()
   {
-      return;
+    return;
 
   }
 
