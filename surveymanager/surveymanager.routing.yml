@@ -62,3 +62,12 @@ surveymanager.sm_vessels:
     _title: 'Vessel Form'
   requirements:
     _permission: 'access content'
+
+surveymanager.job_certificate_form:
+  path: '/surveymanager/jobcertificates'
+  defaults:
+    _form: '\Drupal\surveymanager\Form\JobCertificatesForm'
+    _title: 'Job Certificates'
+  requirements:
+    _permission: 'access content'
+
