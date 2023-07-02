@@ -5,6 +5,7 @@ namespace Drupal\surveymanager\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Database\Database;
+use Drupal\Core\Url;
 
 class JobSurveyForm extends FormBase {
 
@@ -51,8 +52,12 @@ class JobSurveyForm extends FormBase {
       ])
       ->execute();
 
-    // Display a success message.
-    drupal_set_message($this->t('Job survey saved successfully.'));
+    // Provide a success message and redirect to a specific page if needed.
+    $messenger = \Drupal::messenger();
+    $messenger->addMessage($this->t('Job survey saved successfully.'));
+  
+    //To redirect to another site to display list of job support documents.
+    $form_state->setRedirectUrl(Url::fromRoute('surveymanager.list_job_surveys'));
   }
 
 }

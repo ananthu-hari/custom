@@ -69,7 +69,11 @@ class UserSurveyTypesForm extends FormBase {
     if ($query) {
       // Form submission success message.
       $this->messenger()->addMessage($this->t('Form submitted successfully.'));
-    } else {
+
+      //To redirect to another site to display list of job support documents.
+      $form_state->setRedirectUrl(Url::fromRoute('surveymanager.list_user_survey_types'));
+    } 
+    else {
       // Form submission error message.
       $this->messenger()->addError($this->t('Form submission failed.'));
     }

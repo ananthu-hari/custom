@@ -89,9 +89,9 @@ class AdminController extends ControllerBase {
   
   public function list_users()
   {
-    
     $result=$this->getUsersByRole("surveyor");
     //print_r($result);
+
     $header = [
       'ID',
       'Name',
@@ -111,13 +111,137 @@ class AdminController extends ControllerBase {
         'uname' => $uname,
       ];
     }
+      
+    $template= [
+      '#theme' => 'surveymanager_jobs_table',
+      '#header' => $header,
+      '#rows' => $rows      
+    ];
+    $template['#attached']['library'][] = 'surveymanager/main_library';
+    return $template;  
   
+  }
+
+  public function usersurvey_types_list()
+  {
+    $query = $this->database->select('sm_user_survey_types', 'usrsurtypes')
+      ->fields('usrsurtypes');
+    $result =$query->execute();
+
+    $header = [
+      'ID',
+      'Type ID',
+      'User Name',
+    ];
+    $rows = [];
+    foreach ($result as $record) {
+      $rows[] = [
+        'id' => $record->id,
+        'type_id' => $record->type_id,
+        'uname' => $record->uname,
+      ];
+    }
+      
+    $template= [
+      '#theme' => 'surveymanager_jobs_table',
+      '#header' => $header,
+      '#rows' => $rows      
+    ];
+    $template['#attached']['library'][] = 'surveymanager/main_library';
+    return $template;  
+  
+  }
+
+  public function recommendations_list()
+  {
+    $query = $this->database->select('sm_recommendations', 'rec')
+      ->fields('rec');
+    $result =$query->execute();
+
+    $header = [
+      'ID',
+      'Job ID',
+      'Recommendations',
+      'Imposed Date & Time',
+      'Due Date & Time',
+    ];
+    $rows = [];
+    foreach ($result as $record) {
+      $rows[] = [
+        'id' => $record->id,
+        'job_id' => $record->job_id,
+        'recommendation' => $record->recommendation,
+        'imposed_on' => $record->imposed_on,
+        'due_on' => $record->due_on,
+      ];
+    }
+      
+    $template= [
+      '#theme' => 'surveymanager_jobs_table',
+      '#header' => $header,
+      '#rows' => $rows      
+    ];
+    $template['#attached']['library'][] = 'surveymanager/main_library';
+    return $template;  
+  
+  }
+
+  public function job_surveys_list()
+  {
+    $query = $this->database->select('sm_job_surveys', 'jobsurveys')
+      ->fields('jobsurveys');
+    $result =$query->execute();
+
+    $header = [
+      'ID',
+      'Survey Type ID',
+      'Job ID',
+    ];
+    $rows = [];
+    foreach ($result as $record) {
+      $rows[] = [
+        'id' => $record->id,
+        'type_id' => $record->type_id,
+        'job_id' => $record->job_id,
+      ];
+    }
+      
+    $template= [
+      '#theme' => 'surveymanager_jobs_table',
+      '#header' => $header,
+      '#rows' => $rows      
+    ];
+    $template['#attached']['library'][] = 'surveymanager/main_library';
+    return $template;  
+  
+  }
+
+  public function job_support_document_types_list()
+  {
+    $query = $this->database->select('sm_job_support_documents', 'jobsuppdoc')
+      ->fields('jobsuppdoc');
+    $result =$query->execute();
     
+    $header = [
+      'ID',
+      'Type ID',
+      'Job ID',
+      'Document URL',
+    ];
+    $rows = [];
+    foreach ($result as $record) {
+      $rows[] = [
+        'id' => $record->id,
+        'type_id' => $record->type_id,
+        'job_id' => $record->job_id,
+        'url' => $record->url,
+      ];
+    }
+  
     $template= [
       '#theme' => 'surveymanager_jobs_table',
       '#header' => $header,
       '#rows' => $rows
-      
     ];
     $template['#attached']['library'][] = 'surveymanager/main_library';
     return $template;  

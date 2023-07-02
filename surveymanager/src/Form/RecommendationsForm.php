@@ -92,7 +92,11 @@ class recommendationsForm extends FormBase {
   if ($query) {
     // Form submission success message.
     \Drupal::messenger()->addMessage($this->t('Form submitted successfully.'));
-  } else {
+  
+    //To redirect to another site to display list of job support documents.
+    $form_state->setRedirectUrl(Url::fromRoute('surveymanager.list_recommendations'));
+  } 
+  else {
     // Form submission error message.
     \Drupal::messenger()->addError($this->t('Form submission failed.'));
   }
