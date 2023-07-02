@@ -5,6 +5,7 @@ namespace Drupal\surveymanager\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Database\Database;
+use Drupal\Core\Url;
 
 class DocumentTypeForm extends FormBase {
 
@@ -44,6 +45,9 @@ class DocumentTypeForm extends FormBase {
 
     // Display a success message.
     \Drupal::messenger()->addMessage('Certificate has been added.', 'status');
+  
+    // To redirect to another site to list document types
+    $form_state->setRedirectUrl(Url::fromRoute('surveymanager.list_document_type'));
   }
 
 }

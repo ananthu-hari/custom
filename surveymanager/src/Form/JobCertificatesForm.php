@@ -8,6 +8,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Database\Connection;
+use Drupal\Core\Url;
 
 /**
  * Job Certificates form.
@@ -173,6 +174,9 @@ class JobCertificatesForm extends FormBase {
       ->execute();
 
     $this->messenger->addMessage($this->t('Form submitted successfully.'));
+    
+    //To redirect to another site to list job certificates.
+    $form_state->setRedirectUrl(Url::fromRoute('surveymanager.list_job_certificates'));
   }
 
 }

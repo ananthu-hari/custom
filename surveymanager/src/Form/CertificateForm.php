@@ -61,10 +61,10 @@ class CertificateForm extends FormBase {
       ->execute();
 
       
-      // Display a success message.
-      \Drupal::messenger()->addMessage('Certificate has been added.', 'status');
+    // Display a success message.
+    \Drupal::messenger()->addMessage('Certificate has been added.', 'status');
 
-      //$form_state->setRedirectUrl(Url::fromRoute('surveymanager.list_vessels'));
+    $form_state->setRedirectUrl(Url::fromRoute('surveymanager.list_certificate'));
   }
 
 }

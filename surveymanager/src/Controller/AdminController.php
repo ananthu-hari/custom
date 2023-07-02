@@ -87,8 +87,6 @@ class AdminController extends ControllerBase {
     return $results;
   }
   
-
-
   public function list_users()
   {
     
@@ -126,6 +124,107 @@ class AdminController extends ControllerBase {
   
   }
 
+  public function job_certificates_list()
+  {
+    $query = $this->database->select('sm_job_certificates', 'jobcert')
+      ->fields('jobcert');
+    $result =$query->execute();
+
+    $header = [
+      'ID',
+      'Job ID',
+      'Certificate ID',
+      'Certificate Number',
+      'Issued Date',
+      'Expiry Date',
+      'Certificate URL',
+    ];
+    $rows = [];
+    foreach ($result as $record) {
+      $rows[] = [
+        'id' => $record->id,
+        'job_id' => $record->job_id,
+        'certificate_id' => $record->certificate_id,
+        'number' => $record->number,
+        'issued_on' => $record->issued_on,
+        'expire_on' => $record->expire_on,
+        'url' => $record->url,
+      ];
+    }
+  
+    $template= [
+      '#theme' => 'surveymanager_jobs_table',
+      '#header' => $header,
+      '#rows' => $rows
+      
+    ];
+    $template['#attached']['library'][] = 'surveymanager/main_library';
+    return $template;  
+  
+  }
+
+  public function document_type_list()
+  {
+    $query = $this->database->select('sm_support_document_types', 'sdoctype')
+      ->fields('sdoctype');
+    $result =$query->execute();
+
+    $header = [
+      'ID',
+      'Type Name',
+    ];
+    $rows = [];
+    foreach ($result as $record) {
+      $rows[] = [
+        'id' => $record->id,
+        'type_name' => $record->type_name,
+      ];
+    }
+    
+    $template= [
+      '#theme' => 'surveymanager_jobs_table',
+      '#header' => $header,
+      '#rows' => $rows
+      
+    ];
+    $template['#attached']['library'][] = 'surveymanager/main_library';
+    return $template;  
+  
+  }
+
+  public function certificate_list()
+  {
+    $query = $this->database->select('sm_certificates', 'certificates')
+      ->fields('certificates');
+    $result =$query->execute();
+    
+    $header = [
+      'ID',
+      'Certificate Name',
+      'Certificate Code',
+      'Certificate URL',
+    ];
+    $rows = [];
+    foreach ($result as $record) {
+      $rows[] = [
+        'id' => $record->id,
+        'name' => $record->name,
+        'code' => $record->code,
+        'url' => $record->url,
+      ];
+    }
+    
+    $template= [
+      '#theme' => 'surveymanager_jobs_table',
+      '#header' => $header,
+      '#rows' => $rows
+      
+    ];
+    $template['#attached']['library'][] = 'surveymanager/main_library';
+    return $template;  
+  
+  }
+
   public function vessel_list()
   {
     $query = $this->database->select('sm_vessels', 'vessels')
@@ -146,7 +245,6 @@ class AdminController extends ControllerBase {
       ];
     }
   
-    
     $template= [
       '#theme' => 'surveymanager_jobs_table',
       '#header' => $header,
@@ -182,7 +280,7 @@ class AdminController extends ControllerBase {
       ];
     }
   
-    
+
     $template= [
       '#theme' => 'surveymanager_jobs_table',
       '#header' => $header,
