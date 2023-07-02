@@ -11,7 +11,7 @@ surveymanager.admin_dashboard:
   path: '/surveymanager/admin/index'
   defaults:
     _controller: '\Drupal\surveymanager\Controller\AdminController::dashboard'
-    _title: 'Main Page'
+    _title: 'Admin Dashboard'
   requirements:
     _permission: 'access content'
 
@@ -19,7 +19,7 @@ surveymanager.admin_list_users:
   path: '/surveymanager/admin/users/list'
   defaults:
     _controller: '\Drupal\surveymanager\Controller\AdminController::list_users'
-    _title: 'Main Page'
+    _title: 'User List'
   requirements:
     _permission: 'access content'
 
@@ -35,7 +35,7 @@ surveymanager.surveyor_dashboard:
   path: '/surveymanager/surveyor/index'
   defaults:
     _controller: '\Drupal\surveymanager\Controller\SurveyController::dashboard'
-    _title: 'Main Page'
+    _title: 'Surveyor Dashboard'
   requirements:
     _permission: 'access content'
 
@@ -43,7 +43,7 @@ surveymanager.certificate_form:
   path: '/surveymanager/certificate'
   defaults:
     _form: '\Drupal\surveymanager\Form\CertificateForm'
-    _title: 'Certificate Form'
+    _title: 'Add Certificate'
   requirements:
     _permission: 'access content'
 
@@ -51,7 +51,7 @@ surveymanager.document_type_form:
   path: '/surveymanager/documenttype'
   defaults:
     _form: '\Drupal\surveymanager\Form\DocumentTypeForm'
-    _title: 'Document Type Form'
+    _title: 'Add Document Type'
   requirements:
     _permission: 'access content'
 
@@ -67,7 +67,7 @@ surveymanager.survey_type_form:
   path: '/surveymanager/surveytype'
   defaults:
     _form: '\Drupal\surveymanager\Form\SurveyTypeForm'
-    _title: 'Add Survey Type Form'
+    _title: 'Add Survey Type'
   requirements:
     _permission: 'access content'
 
@@ -75,7 +75,7 @@ surveymanager.recommendations_form:
   path: '/surveymanager/recommendations'
   defaults:
     _form: '\Drupal\surveymanager\Form\RecommendationsForm'
-    _title: 'Recommendations Form'
+    _title: 'Add Recommendations'
   requirements:
     _permission: 'access content'
 
@@ -83,7 +83,7 @@ surveymanager.job_certificate_form:
   path: '/surveymanager/jobcertificates'
   defaults:
     _form: '\Drupal\surveymanager\Form\JobCertificatesForm'
-    _title: 'Job Certificates'
+    _title: 'Add Job Certificates'
   requirements:
     _permission: 'access content'
 
@@ -107,7 +107,7 @@ surveymanager.job_survey_form:
   path: '/surveymanager/jobsurvey'
   defaults:
     _form: '\Drupal\surveymanager\Form\JobSurveyForm'
-    _title: 'Job Survey Form'
+    _title: 'Add Job Survey'
   requirements:
     _permission: 'access content'
 
@@ -115,7 +115,7 @@ surveymanager.job_support_documents_form:
   path: '/surveymanager/supportdoc'
   defaults:
     _form: '\Drupal\surveymanager\Form\JobSupportDocumentsForm'
-    _title: 'Job Support Document Form'
+    _title: 'Add Job Support Document'
   requirements:
     _permission: 'access content'  
 
@@ -123,6 +123,6 @@ surveymanager.user_survey_types_form:
   path: '/surveymanager/usersurveytype'
   defaults:
     _form: '\Drupal\surveymanager\Form\UserSurveyTypesForm'
-    _title: 'User Survey Types Form'
+    _title: 'Add User Survey Types'
   requirements:
     _permission: 'access content'
