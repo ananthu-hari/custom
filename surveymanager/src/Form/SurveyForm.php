@@ -25,7 +25,7 @@ class SurveyForm extends FormBase {
       $options[$result->id] = $result->name;
     }
       
-    /*$surveyCodes = [
+    $surveyCodes = [
       'SSH' => 'Special Survey Hull',
       'SSM' => 'Special Survey Machinery',
       'CLA' => 'Class Annual Survey',
@@ -82,7 +82,7 @@ class SurveyForm extends FormBase {
      
      
       // Add more survey codes and names here...
-    ];*/
+    ];
       
     // Get user input letters
     $user_input = $form_state->getValue('user_input');
