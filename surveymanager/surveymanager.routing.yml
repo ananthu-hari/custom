@@ -86,3 +86,11 @@ surveymanager.jobs_form:
     _title: 'Add Jobs'
   requirements:
     _permission: 'access content'
+
+surveymanager.vessel_:
+  path: '/surveymanager/vesselform'
+  defaults:
+    _form: '\Drupal\surveymanager\Form\VesselsForm'
+    _title: 'Add Vessel'
+  requirements:
+    _permission: 'access content'
