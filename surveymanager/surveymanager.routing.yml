@@ -47,15 +47,6 @@ surveymanager.certificate_form:
   requirements:
     _permission: 'access content'
 
-
-surveymanager.admin_list_certificates:
-  path: 'surveymanager/admin/users/certificate'
-  defaults:
-    _controller: '\Drupal\surveymanager\Controller\AdminController::list_certificates'
-    _title: 'Certificate List'
-  requirements:
-    _permission: 'access content'
-
 surveymanager.document_type_form:
   path: '/surveymanager/documenttype'
   defaults:
