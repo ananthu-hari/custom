@@ -78,3 +78,11 @@ surveymanager.job_certificate_form:
     _title: 'Job Certificates'
   requirements:
     _permission: 'access content'
+
+surveymanager.jobs_form:
+  path: '/surveymanager/jobsform'
+  defaults:
+    _form: '\Drupal\surveymanager\Form\JobsForm'
+    _title: 'Add Jobs'
+  requirements:
+    _permission: 'access content'
