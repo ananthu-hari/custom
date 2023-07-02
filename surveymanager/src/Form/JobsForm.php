@@ -48,11 +48,15 @@ class JobsForm extends FormBase {
       '#required' => TRUE,
     ];
 
-    $form['status'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Status'),
-      '#required' => TRUE,
-    ];
+     $form['status'] = [
+    '#type' => 'select',
+    '#title' => $this->t('Status'),
+    '#options' => [
+      'active' => $this->t('Active'),
+      'pending' => $this->t('Pending'),
+    ],
+    '#required' => TRUE,
+  ];
 
     $form['actions']['submit'] = [
       '#type' => 'submit',
