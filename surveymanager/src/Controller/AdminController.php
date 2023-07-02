@@ -92,5 +92,32 @@ class AdminController extends ControllerBase {
 
   }
 
+  public function list_document_types() {
+    $query = \Drupal::database()->select('sm_support_document_types', 'sd');
+    $query->fields('sd', ['id', 'type_name']);
+    $results = $query->execute()->fetchAll();
+  
+    $header = [
+      'ID',
+      'Type Name',
+    ];
+    $rows = [];
+  
+    foreach ($results as $result) {
+      $rows[] = [
+        'id' => $result->id,
+        'type_name' => $result->type_name,
+      ];
+    }
+  
+    $template = [
+      '#theme' => 'surveymanager_document_types_table',
+      '#header' => $header,
+      '#rows' => $rows,
+    ];
+    $template['#attached']['library'][]='surveymanager/main_library';
+    return $template;
+  }
+
 
 }

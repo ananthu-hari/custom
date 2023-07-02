@@ -1,0 +1,23 @@
+<table id="support-document-types-table" class="table table-striped" style="width:100%">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Type Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for document in documents %}
+      <tr>
+        <td>{{ document.id }}</td>
+        <td>{{ document.type_name }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>ID</th>
+      <th>Type Name</th>
+    </tr>
+  </tfoot>
+</table>
+

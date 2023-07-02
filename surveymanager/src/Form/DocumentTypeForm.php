@@ -43,7 +43,8 @@ class DocumentTypeForm extends FormBase {
       ->execute();
 
     // Display a success message.
-    drupal_set_message($this->t('Document type saved successfully.'));
+    \Drupal::messenger()->addMessage('document type saved successfully', 'status');
+    $form_state->setRedirect('surveymanager.list_document_types');
   }
 
 }
