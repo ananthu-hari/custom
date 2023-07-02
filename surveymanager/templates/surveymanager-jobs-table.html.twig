@@ -1,5 +1,5 @@
 <table id="usertable" class="table table-striped" style="width:100%">
-        <thead>
+  <thead>
     <tr>
       {% for column in header %}
         <th>{{ column }}</th>
@@ -16,11 +16,11 @@
       </tr>
     {% endfor %}
   </tbody>
-        <tfoot>
-            <tr>
-               {% for column in header %}
+  <tfoot>
+    <tr>
+      {% for column in header %}
         <th>{{ column }}</th>
       {% endfor %}
-            </tr>
-        </tfoot>
-    </table>
+    </tr>
+  </tfoot>
+</table>
