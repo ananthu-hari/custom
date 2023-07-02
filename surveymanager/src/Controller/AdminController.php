@@ -156,6 +156,38 @@ class AdminController extends ControllerBase {
     return $template;  
   }
 
+/*  public function certificate_table()
+  {
+    $query = $this->database->select('sm_certificates', 'c')
+      ->fields('c');
+    $result = $query->execute();
+
+    $header = [
+      'ID',
+      'Certificate Name',
+      'Certificate Code',
+      'Certificate URL',
+    ];
+    $rows = [];
+    foreach ($result as $record) {
+      $rows[] = [
+        'id' => $record->id,
+        'name' => $record->name,
+        'code' => $record->code,
+        'url' => $record->url,
+      ];
+    }
+
+    $template = [
+      '#theme' => 'surveymanager_certificates_table',
+      '#header' => $header,
+      '#rows' => $rows,
+    ];
+    $template['#attached']['library'][] = 'surveymanager/main_library';
+    return $template;
+  }
+*/
+
   public function dashboard()
   {
       return;
