@@ -5,9 +5,7 @@ namespace Drupal\surveymanager\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Database\Database;
-
 use Symfony\Component\HttpFoundation\RedirectResponse;
-
 use Drupal\Core\Url;
 
 class CertificateForm extends FormBase {
@@ -66,10 +64,7 @@ class CertificateForm extends FormBase {
       // Display a success message.
       \Drupal::messenger()->addMessage('Certificate has been added.', 'status');
 
-      //$form_state->setRedirect('surveymanager.list_certificates');
-      $url = Url::fromRoute('surveymanager.admin_list_certificates');
-      $response = new RedirectResponse($url->toString());
-      $form_state->setResponse($response);
+      //$form_state->setRedirectUrl(Url::fromRoute('surveymanager.list_vessels'));
   }
 
 }

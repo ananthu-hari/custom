@@ -14,14 +14,6 @@ surveymanager.login_form:
 #  requirements:
 #    _permission: 'access content'
 
-#surveymanager.admin_list_certificates:
-#  path: '/surveymanager/certificates/list'
-#  defaults:
-#    _controller: '\Drupal\surveymanager\Controller\AdminController::certificate_table'
-#    _title: 'Certificates'
-#  requirements:
-#   _permission: 'access content'
-
 surveymanager.admin_dashboard:
   path: '/surveymanager/admin/index'
   defaults:
