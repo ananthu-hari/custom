@@ -70,3 +70,12 @@ surveymanager.survey_type_form:
     _title: 'Add Survey Type Form'
   requirements:
     _permission: 'access content'
+
+surveymanager.recommendations_form:
+  path: '/surveymanager/recommendations'
+  defaults:
+    _form: '\Drupal\surveymanager\Form\recommendationsForm'
+    _title: 'Recommendations Form'
+  requirements:
+    _permission: 'access content'
+ 
