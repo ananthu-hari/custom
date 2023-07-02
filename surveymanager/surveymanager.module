@@ -23,14 +23,7 @@ function surveymanager_theme($existing, $type, $theme, $path) {
         'rows' => NULL
       ],
       'template' => 'surveymanager-jobs-table',
-    ],
-    'surveymanager_survey_types_table' => [
-      'variables' => [
-        'header' => NULL,
-        'rows' => NULL
-      ],
-      'template' => 'surveymanager-survey-types-table',
-    ],
+    ],ss
   ]; 
 }
 

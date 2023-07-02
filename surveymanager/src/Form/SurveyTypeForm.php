@@ -58,11 +58,10 @@
             ->execute();
 
         // Set a success message.
-        \Drupal::messenger()
-            ->addStatus($this->t('Survey Type has been added.'));
-
+        \Drupal::messenger()->addMessage('Survey Type has been added.','status');
+        
         // Redirect to a different page after the form submission.
-        $form_state->setRedirect('surveymanager.list_surveytypes');
+        //$form_state->setRedirect('surveymanager.admin_list_users');
     }
 
 }
