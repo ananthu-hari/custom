@@ -48,7 +48,7 @@ surveymanager.document_type_form:
     _permission: 'access content'
 
 survey_form.form:
-  path: '/surveymanager/surveytypes'
+  path: '/surveymanager/survey'
   defaults:
     _form: '\Drupal\surveymanager\Form\SurveyForm'
     _title: 'Survey Form'
@@ -60,5 +60,13 @@ surveymanager.sm_vessels:
   defaults:
     _form: '\Drupal\surveymanager\Form\smVessel'
     _title: 'Vessel Form'
+  requirements:
+    _permission: 'access content'
+
+surveymanager.survey_type_form:
+  path: '/surveymanager/surveytype'
+  defaults:
+    _form: '\Drupal\surveymanager\Form\SurveyTypeForm'
+    _title: 'Add Survey Type Form'
   requirements:
     _permission: 'access content'
