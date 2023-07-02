@@ -86,6 +86,41 @@ class AdminController extends ControllerBase {
   
   }
 
+  public function list_survey_types()
+  {
+    
+    $result=$this->getUsersByRole("surveyor");
+    //print_r($result);
+    
+    $header = [
+      'Survey Name',
+      'Survey Code',
+    ];
+    $rows = [];
+    foreach ($result as $record) {
+      $user = User::load($record[0]);
+      $uname=$user->get('name')->value;
+      $profile=$this->read_user_profile_by_uname($uname);
+      $mail=$user->getEmail();
+      $rows[] = [
+        'id' => $record[0],
+        'name' => $profile[0]->name,
+        'mail' => $mail,
+        'uname' => $uname,
+      ];
+    }
+  
+    
+    $template= [
+      '#theme' => 'surveymanager_jobs_table',
+      '#header' => $header,
+      '#rows' => $rows,
+    ];
+    $template['#attached']['library'][] = 'surveymanager/main_library';
+    return $template;  
+  
+  }
+
   public function dashboard()
   {
       return;

@@ -16,14 +16,22 @@ use Drupal\Core\Database\Schema\Schema;
  */
 function surveymanager_theme($existing, $type, $theme, $path) {
 
-    return ['surveymanager_jobs_table' => [
+  return [
+    'surveymanager_jobs_table' => [
       'variables' => [
         'header' => NULL,
         'rows' => NULL
-        ],
+      ],
       'template' => 'surveymanager-jobs-table',
-        ],
-    ]; 
+    ],
+    'surveymanager_survey_types_table' => [
+      'variables' => [
+        'header' => NULL,
+        'rows' => NULL
+      ],
+      'template' => 'surveymanager-survey-types',
+    ],
+  ]; 
 }
 
 function sm_user_schema()
