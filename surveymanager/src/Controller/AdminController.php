@@ -8,8 +8,14 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\user\UserAuthInterface;
 use Drupal\user\Entity\User;
+<<<<<<< HEAD
 use Drupal\Core\Database\Connection;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+=======
+
+//use Symfony\Component\DependencyInjection\ContainerInterface;
+
+>>>>>>> 2b62639 (Added certificate form template,jobsurveyform)
 /**
  * Controller for the example route.
  */
@@ -125,6 +131,8 @@ class AdminController extends ControllerBase {
   
   }
 
+
+<<<<<<< HEAD
   public function survey_types_table()
   {
     $query = $this->database->select('sm_survey_types', 's')
@@ -155,6 +163,8 @@ class AdminController extends ControllerBase {
     return $template;  
   }
 
+=======
+>>>>>>> 2b62639 (Added certificate form template,jobsurveyform)
   public function dashboard()
   {
       return;
