@@ -9,10 +9,9 @@
   <tbody>
     {% for row in rows %}
       <tr>
-        <td>{{ row.id }}</td>
-        <td>{{ row.name }}</td>
-        <td>{{ row.mail }}</td>
-        <td>{{ row.uname}}</td> <th>{{ column }}</th>
+        {% for column in row %}
+          <td>{{ column }}</td>
+        {% endfor %}
       </tr>
     {% endfor %}
   </tbody>

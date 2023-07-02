@@ -8,10 +8,49 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\user\UserAuthInterface;
 use Drupal\user\Entity\User;
+use Drupal\Core\Database\Connection;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Controller for the example route.
  */
 class AdminController extends ControllerBase {
+
+  /**
+   * The database connection.
+   *
+   * @var \Drupal\Core\Database\Connection
+   */
+  protected $database;
+  /**
+   * Constructs a new AdminController object.
+   *
+   * @param \Drupal\Core\Database\Connection $database
+   *   The database connection.
+   */
+  public function __construct(Connection $database) {
+    $this->database = $database;
+  }
+  /**
+   * Creates an instance of the SurveyManagerController.
+   *
+   * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
+   *   The Drupal service container.
+   *
+   * @return \Drupal\surveymanager\Controller\SurveyManagerController
+   *   The created instance of the controller.
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('database')
+    );
+  }
+  /**
+   * Displays the survey types table.
+   *
+   * @return array
+   *   A render array representing the table.
+   */
+
 
   /**
    * Returns the content for the example route.
@@ -84,6 +123,36 @@ class AdminController extends ControllerBase {
     $template['#attached']['library'][] = 'surveymanager/main_library';
     return $template;  
   
+  }
+
+  public function survey_types_table()
+  {
+    $query = $this->database->select('sm_survey_types', 's')
+      ->fields('s');
+      
+    $result =$query->execute();
+    //print_r($result);
+    $header = [
+      'ID',
+      'Survey Name',
+      'Survey Code',
+    ];
+    $rows = [];
+    foreach ($result as $record) {
+      $rows[] = [
+        'id' => $record->id,
+        'name' => $record->name,
+        'code' => $record->code,
+      ];
+    }
+  
+    $template= [
+      '#theme' => 'surveymanager_jobs_table',
+      '#header' => $header,
+      '#rows' => $rows
+    ];
+    $template['#attached']['library'][] = 'surveymanager/main_library';
+    return $template;  
   }
 
   public function dashboard()
