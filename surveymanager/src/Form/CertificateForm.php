@@ -6,6 +6,10 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Database\Database;
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+use Drupal\Core\Url;
+
 class CertificateForm extends FormBase {
 
   public function getFormId() {
@@ -58,8 +62,14 @@ class CertificateForm extends FormBase {
       ])
       ->execute();
 
-    // Display a success message.
-    \Drupal::messenger()->addMessage('Certificate has been added.', 'status');
+      
+      // Display a success message.
+      \Drupal::messenger()->addMessage('Certificate has been added.', 'status');
+
+      //$form_state->setRedirect('surveymanager.list_certificates');
+      $url = Url::fromRoute('surveymanager.admin_list_certificates');
+      $response = new RedirectResponse($url->toString());
+      $form_state->setResponse($response);
   }
 
 }
