@@ -9,6 +9,10 @@ use Drupal\user\UserAuthInterface;
 use Drupal\user\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+
 /**
  * User login form.
  */
@@ -85,9 +89,9 @@ class LoginForm extends FormBase {
       user_login_finalize($user);
 
       // Check if the user has the 'surveyadmin' role.
-      if ($user->hasRole('Survey Administrator')) {
+      if ($user->hasRole('survey_admin')) {
         //To redirect to admin dashboard if logined as Survey Administrator
-        //$form_state->setRedirectUrl(Url::fromRoute('surveymanager.admin_login'));
+        $form_state->setRedirectUrl(Url::fromRoute('surveymanager.admin_dashboard'));
       }
       else {
         // Redirect to a different page if the user is not a surveyadmin.

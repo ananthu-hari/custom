@@ -18,7 +18,7 @@ surveymanager.admin_dashboard:
   path: '/surveymanager/admin/index'
   defaults:
     _controller: '\Drupal\surveymanager\Controller\AdminController::dashboard'
-    _title: 'Main Page'
+    _title: 'Welcome to Admin Dashboard!'
   requirements:
     _permission: 'access content'
 

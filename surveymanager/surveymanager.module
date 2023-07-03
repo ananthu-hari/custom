@@ -23,6 +23,12 @@ function surveymanager_theme($existing, $type, $theme, $path) {
         ],
       'template' => 'surveymanager-jobs-table',
         ],
+        'dashboard_page' => [
+            'variables' => [
+              'buttons' => [],
+            ],
+          'template' => 'dashboard-page',
+          ],
     ]; 
 }
 

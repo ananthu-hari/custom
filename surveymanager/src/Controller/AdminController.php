@@ -9,6 +9,9 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\user\UserAuthInterface;
 use Drupal\user\Entity\User;
 
+use Drupal\Core\Link;
+
+
 use Drupal\Core\Database\Connection;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
@@ -446,11 +449,104 @@ class AdminController extends ControllerBase {
     return $template;  
   }
   
-  public function dashboard()
-  {
-    return;
+  public function dashboard() {
+
+     // Create an array to store the buttons.
+     $buttons = [];
+
+     // Add a button for the certificate form.
+     $certificateUrl = Url::fromRoute('surveymanager.certificate_form');
+     $buttons[] = [
+       '#type' => 'link',
+       '#title' => $this->t('Certificate Form'),
+       '#url' => $certificateUrl,
+       '#attributes' => ['class' => ['button']],
+     ];
+ 
+     // Add a button for the document type form.
+     $documentTypeUrl = Url::fromRoute('surveymanager.document_type_form');
+     $buttons[] = [
+       '#type' => 'link',
+       '#title' => $this->t('Document Type Form'),
+       '#url' => $documentTypeUrl,
+       '#attributes' => ['class' => ['button']],
+     ];
+ 
+     $surveyTypeUrl = Url::fromRoute('surveymanager.survey_type_form');
+     $buttons[] = [
+       '#type' => 'link',
+       '#title' => $this->t('Survey Type Form'),
+       '#url' => $surveyTypeUrl,
+       '#attributes' => ['class' => ['button']],
+     ];
+
+     $jobCertificateUrl = Url::fromRoute('surveymanager.job_certificate_form');
+     $buttons[] = [
+       '#type' => 'link',
+       '#title' => $this->t('Job Certificate Form'),
+       '#url' => $jobCertificateUrl,
+       '#attributes' => ['class' => ['button']],
+     ];
+
+     $jobsFormUrl = Url::fromRoute('surveymanager.jobs_form');
+     $buttons[] = [
+       '#type' => 'link',
+       '#title' => $this->t('Jobs Form'),
+       '#url' => $jobsFormUrl,
+       '#attributes' => ['class' => ['button']],
+     ];
+
+     $jobSupportDocUrl = Url::fromRoute('surveymanager.job_support_documents_form');
+     $buttons[] = [
+       '#type' => 'link',
+       '#title' => $this->t('Job Support Documents Form'),
+       '#url' => $jobSupportDocUrl,
+       '#attributes' => ['class' => ['button']],
+     ];
+
+     $jobSurveyUrl = Url::fromRoute('surveymanager.job_survey_form');
+     $buttons[] = [
+       '#type' => 'link',
+       '#title' => $this->t('Job Survey Form'),
+       '#url' => $jobSurveyUrl,
+       '#attributes' => ['class' => ['button']],
+     ];
+
+     $vesselsUrl = Url::fromRoute('surveymanager.vessel');
+     $buttons[] = [
+       '#type' => 'link',
+       '#title' => $this->t('Vessel Form'),
+       '#url' => $vesselsUrl,
+       '#attributes' => ['class' => ['button']],
+     ];
+
+     $userSurveyTypesUrl = Url::fromRoute('surveymanager.user_survey_types_form');
+     $buttons[] = [
+       '#type' => 'link',
+       '#title' => $this->t('User Survey Types Form'),
+       '#url' => $userSurveyTypesUrl,
+       '#attributes' => ['class' => ['button']],
+     ];
+
+     $recommendationsUrl = Url::fromRoute('surveymanager.recommendations_form');
+     $buttons[] = [
+       '#type' => 'link',
+       '#title' => $this->t('Recommendations Form'),
+       '#url' => $recommendationsUrl,
+       '#attributes' => ['class' => ['button']],
+     ];
+
+     // Build the render array for the buttons.
+     $build = [
+       '#theme' => 'dashboard_page',
+       '#buttons' => $buttons,
+     ];
+ 
+     return $build;
 
   }
 
-
 }
+
+
+
