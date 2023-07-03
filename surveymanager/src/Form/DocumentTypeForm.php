@@ -5,10 +5,7 @@ namespace Drupal\surveymanager\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Database\Database;
-<<<<<<< HEAD
-=======
 use Drupal\Core\Url;
->>>>>>> repo/main
 
 class DocumentTypeForm extends FormBase {
 
@@ -47,14 +44,10 @@ class DocumentTypeForm extends FormBase {
       ->execute();
 
     // Display a success message.
-<<<<<<< HEAD
-    drupal_set_message($this->t('Document type saved successfully.'));
-=======
     \Drupal::messenger()->addMessage('Certificate has been added.', 'status');
   
     // To redirect to another site to list document types
     $form_state->setRedirectUrl(Url::fromRoute('surveymanager.list_document_type'));
->>>>>>> repo/main
   }
 
 }

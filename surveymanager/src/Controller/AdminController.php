@@ -8,20 +8,15 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\user\UserAuthInterface;
 use Drupal\user\Entity\User;
-<<<<<<< HEAD
-=======
 
 use Drupal\Core\Database\Connection;
 use Symfony\Component\DependencyInjection\ContainerInterface;
->>>>>>> repo/main
 /**
  * Controller for the example route.
  */
 class AdminController extends ControllerBase {
 
   /**
-<<<<<<< HEAD
-=======
    * The database connection.
    *
    * @var \Drupal\Core\Database\Connection
@@ -59,7 +54,6 @@ class AdminController extends ControllerBase {
 
 
   /**
->>>>>>> repo/main
    * Returns the content for the example route.
    */
 
@@ -93,21 +87,11 @@ class AdminController extends ControllerBase {
     return $results;
   }
   
-<<<<<<< HEAD
-
-
-  public function list_users()
-  {
-    
-    $result=$this->getUsersByRole("surveyor");
-    //print_r($result);
-=======
   public function list_users()
   {
     $result=$this->getUsersByRole("surveyor");
     //print_r($result);
 
->>>>>>> repo/main
     $header = [
       'ID',
       'Name',
@@ -127,9 +111,6 @@ class AdminController extends ControllerBase {
         'uname' => $uname,
       ];
     }
-<<<<<<< HEAD
-  
-=======
       
     $template= [
       '#theme' => 'surveymanager_jobs_table',
@@ -323,7 +304,6 @@ class AdminController extends ControllerBase {
         'type_name' => $record->type_name,
       ];
     }
->>>>>>> repo/main
     
     $template= [
       '#theme' => 'surveymanager_jobs_table',
@@ -336,11 +316,6 @@ class AdminController extends ControllerBase {
   
   }
 
-<<<<<<< HEAD
-  public function dashboard()
-  {
-      return;
-=======
   public function certificate_list()
   {
     $query = $this->database->select('sm_certificates', 'certificates')
@@ -474,7 +449,6 @@ class AdminController extends ControllerBase {
   public function dashboard()
   {
     return;
->>>>>>> repo/main
 
   }
 
