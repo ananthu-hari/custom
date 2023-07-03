@@ -6,8 +6,6 @@ surveymanager.login_form:
   requirements:
     _permission: 'access content'
 
-<<<<<<< HEAD
-=======
 #surveymanager.admin_login:
 #  path: '/surveymanager/admin/dashboard'
 #  defaults:
@@ -15,7 +13,6 @@ surveymanager.login_form:
 #    _title: 'Admin Dashboard'
 #  requirements:
 #    _permission: 'access content'
->>>>>>> repo/main
 
 surveymanager.admin_dashboard:
   path: '/surveymanager/admin/index'
@@ -29,9 +26,6 @@ surveymanager.admin_list_users:
   path: '/surveymanager/admin/users/list'
   defaults:
     _controller: '\Drupal\surveymanager\Controller\AdminController::list_users'
-<<<<<<< HEAD
-    _title: 'Main Page'
-=======
     _title: 'User List'
   requirements:
     _permission: 'access content'
@@ -113,7 +107,6 @@ surveymanager.list_survey_types:
   defaults:
     _controller: '\Drupal\surveymanager\Controller\AdminController::survey_types_table'
     _title: 'Survey Types'
->>>>>>> repo/main
   requirements:
     _permission: 'access content'
 
@@ -121,11 +114,7 @@ surveymanager.surveyor_dashboard:
   path: '/surveymanager/surveyor/index'
   defaults:
     _controller: '\Drupal\surveymanager\Controller\SurveyController::dashboard'
-<<<<<<< HEAD
-    _title: 'Main Page'
-=======
     _title: 'Surveyor Dashboard'
->>>>>>> repo/main
   requirements:
     _permission: 'access content'
 
@@ -133,48 +122,26 @@ surveymanager.certificate_form:
   path: '/surveymanager/certificate'
   defaults:
     _form: '\Drupal\surveymanager\Form\CertificateForm'
-<<<<<<< HEAD
-    _title: 'Certificate Form'
-  requirements:
-    _permission: 'access content'
-    
-=======
     _title: 'Add Certificate'
   requirements:
     _permission: 'access content'
 
->>>>>>> repo/main
 surveymanager.document_type_form:
   path: '/surveymanager/documenttype'
   defaults:
     _form: '\Drupal\surveymanager\Form\DocumentTypeForm'
-<<<<<<< HEAD
-    _title: 'Document Type Form'
-=======
     _title: 'Add Document Type'
->>>>>>> repo/main
   requirements:
     _permission: 'access content'
 
 survey_form.form:
-<<<<<<< HEAD
-  path: '/surveymanager/surveytypes'
-=======
   path: '/surveymanager/survey'
->>>>>>> repo/main
   defaults:
     _form: '\Drupal\surveymanager\Form\SurveyForm'
     _title: 'Survey Form'
   requirements:
     _permission: 'access content'
 
-<<<<<<< HEAD
-surveymanager.sm_vessels:
-  path: '/surveymanager/smvessel'
-  defaults:
-    _form: '\Drupal\surveymanager\Form\smVessel'
-    _title: 'Vessel Form'
-=======
 surveymanager.survey_type_form:
   path: '/surveymanager/surveytype'
   defaults:
@@ -188,7 +155,6 @@ surveymanager.recommendations_form:
   defaults:
     _form: '\Drupal\surveymanager\Form\RecommendationsForm'
     _title: 'Add Recommendations'
->>>>>>> repo/main
   requirements:
     _permission: 'access content'
 
@@ -196,12 +162,6 @@ surveymanager.job_certificate_form:
   path: '/surveymanager/jobcertificates'
   defaults:
     _form: '\Drupal\surveymanager\Form\JobCertificatesForm'
-<<<<<<< HEAD
-    _title: 'Job Certificates'
-  requirements:
-    _permission: 'access content'
-
-=======
     _title: 'Add Job Certificates'
   requirements:
     _permission: 'access content'
@@ -245,4 +205,3 @@ surveymanager.user_survey_types_form:
     _title: 'Add User Survey Types'
   requirements:
     _permission: 'access content'
->>>>>>> repo/main
