@@ -70,19 +70,24 @@ class JobCertificatesForm extends FormBase {
     return 'sm_job_certificates_form';
   }
 
-    /**
+  /**
    * Retrieves job options for the select field.
    *
    * @return array
    *   An array of job options.
    */
   private function getJobOptions() {
-    $jobIds = $this->database->select('sm_jobs', 'j')
-      ->fields('j', ['id'])
+    $jobRecords = $this->database->select('sm_jobs', 'j')
+      ->fields('j', ['id', 'number', 'surveyor_uname', 'vessel_id'])
       ->execute()
-      ->fetchCol();
+      ->fetchAll();
 
-    return array_combine($jobIds, $jobIds);
+    $jobOptions = [];
+    foreach ($jobRecords as $job) {
+      $jobOptions[$job->id] = $job->number . ' (Surveyor: ' . $job->surveyor_uname . ', Vessel ID: ' . $job->vessel_id . ')';
+    }
+
+    return $jobOptions;
   }
 
   /**
@@ -92,14 +97,19 @@ class JobCertificatesForm extends FormBase {
    *   An array of certificate options.
    */
   private function getCertificateOptions() {
-    $certificateIds = $this->database->select('sm_certificates', 'c')
-      ->fields('c', ['id'])
+    $certificateRecords = $this->database->select('sm_certificates', 'c')
+      ->fields('c', ['id', 'name', 'code'])
       ->execute()
-      ->fetchCol();
+      ->fetchAll();
 
-    return array_combine($certificateIds, $certificateIds);
+    $certificateOptions = [];
+    foreach ($certificateRecords as $certificate) {
+      $certificateOptions[$certificate->id] = $certificate->name . ' (' . $certificate->code . ')';
+    }
+
+    return $certificateOptions;
   }
-  
+
   /**
    * {@inheritdoc}
    */
@@ -174,8 +184,8 @@ class JobCertificatesForm extends FormBase {
       ->execute();
 
     $this->messenger->addMessage($this->t('Form submitted successfully.'));
-    
-    //To redirect to another site to list job certificates.
+
+    // To redirect to another site to list job certificates.
     $form_state->setRedirectUrl(Url::fromRoute('surveymanager.list_job_certificates'));
   }
 

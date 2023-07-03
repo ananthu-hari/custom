@@ -5,9 +5,8 @@ namespace Drupal\surveymanager\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
-use Drupal\user\UserAuthInterface;
-use Drupal\user\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+
 /**
  * User Survey Types form.
  */
@@ -24,10 +23,13 @@ class UserSurveyTypesForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state): array {
+    $surveyTypeOptions = $this->getSurveyTypeOptions();
+
     $form['type_id'] = [
-      '#type' => 'textfield',
+      '#type' => 'select',
       '#title' => $this->t('Type ID'),
       '#required' => TRUE,
+      '#options' => $surveyTypeOptions,
     ];
 
     $form['uname'] = [
@@ -68,16 +70,35 @@ class UserSurveyTypesForm extends FormBase {
 
     if ($query) {
       // Form submission success message.
-      $this->messenger()->addMessage($this->t('Form submitted successfully.'));
+      \Drupal::messenger()->addMessage($this->t('Form submitted successfully.'));
 
-      //To redirect to another site to display list of job support documents.
+      // To redirect to another site to display a list of job support documents.
       $form_state->setRedirectUrl(Url::fromRoute('surveymanager.list_user_survey_types'));
-    } 
-    else {
+    } else {
       // Form submission error message.
-      $this->messenger()->addError($this->t('Form submission failed.'));
+      \Drupal::messenger()->addError($this->t('Form submission failed.'));
     }
   }
 
+  /**
+   * Get the survey type options for the dropdown list.
+   *
+   * @return array
+   *   An array of survey type options in the format [value => label].
+   */
+  private function getSurveyTypeOptions() {
+    $surveyTypeOptions = [];
+
+    // Retrieve the survey type data from the 'sm_survey_types' table.
+    $query = \Drupal::database()->select('sm_survey_types', 's');
+    $query->fields('s', ['id', 'name', 'code']);
+    $results = $query->execute()->fetchAll();
+
+    // Build the options array.
+    foreach ($results as $result) {
+      $surveyTypeOptions[$result->id] = $result->name . ' (' . $result->code.')';
+    }
+
+    return $surveyTypeOptions;
+  }
 }
-?>
