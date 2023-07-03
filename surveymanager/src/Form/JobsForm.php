@@ -26,9 +26,14 @@ class JobsForm extends FormBase {
     // Retrieve vessel details from the 'sm_vessels' table.
     $connection = Database::getConnection();
     $vessel_options = $connection->select('sm_vessels', 'v')
-      ->fields('v', ['id', 'name'])
+      ->fields('v', ['id', 'name', 'imo'])
       ->execute()
-      ->fetchAllKeyed();
+      ->fetchAll();
+
+    $options = [];
+    foreach ($vessel_options as $vessel) {
+      $options[$vessel->id] = $vessel->name . ' (' . $vessel->imo . ')';
+    }
 
     $form['number'] = [
       '#type' => 'textfield',
@@ -44,19 +49,19 @@ class JobsForm extends FormBase {
     $form['vessel_id'] = [
       '#type' => 'select',
       '#title' => $this->t('Vessel'),
-      '#options' => $vessel_options,
+      '#options' => $options,
       '#required' => TRUE,
     ];
 
-     $form['status'] = [
-    '#type' => 'select',
-    '#title' => $this->t('Status'),
-    '#options' => [
-      'active' => $this->t('Active'),
-      'pending' => $this->t('Pending'),
-    ],
-    '#required' => TRUE,
-  ];
+    $form['status'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Status'),
+      '#options' => [
+        'active' => $this->t('Active'),
+        'pending' => $this->t('Pending'),
+      ],
+      '#required' => TRUE,
+    ];
 
     $form['actions']['submit'] = [
       '#type' => 'submit',
