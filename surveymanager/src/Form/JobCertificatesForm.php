@@ -8,6 +8,10 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Database\Connection;
+<<<<<<< HEAD
+=======
+use Drupal\Core\Url;
+>>>>>>> repo/main
 
 /**
  * Job Certificates form.
@@ -69,6 +73,39 @@ class JobCertificatesForm extends FormBase {
     return 'sm_job_certificates_form';
   }
 
+<<<<<<< HEAD
+=======
+    /**
+   * Retrieves job options for the select field.
+   *
+   * @return array
+   *   An array of job options.
+   */
+  private function getJobOptions() {
+    $jobIds = $this->database->select('sm_jobs', 'j')
+      ->fields('j', ['id'])
+      ->execute()
+      ->fetchCol();
+
+    return array_combine($jobIds, $jobIds);
+  }
+
+  /**
+   * Retrieves certificate options for the select field.
+   *
+   * @return array
+   *   An array of certificate options.
+   */
+  private function getCertificateOptions() {
+    $certificateIds = $this->database->select('sm_certificates', 'c')
+      ->fields('c', ['id'])
+      ->execute()
+      ->fetchCol();
+
+    return array_combine($certificateIds, $certificateIds);
+  }
+  
+>>>>>>> repo/main
   /**
    * {@inheritdoc}
    */
@@ -143,6 +180,7 @@ class JobCertificatesForm extends FormBase {
       ->execute();
 
     $this->messenger->addMessage($this->t('Form submitted successfully.'));
+<<<<<<< HEAD
   }
 
   /**
@@ -176,3 +214,11 @@ class JobCertificatesForm extends FormBase {
   }
 
 }
+=======
+    
+    //To redirect to another site to list job certificates.
+    $form_state->setRedirectUrl(Url::fromRoute('surveymanager.list_job_certificates'));
+  }
+
+}
+>>>>>>> repo/main

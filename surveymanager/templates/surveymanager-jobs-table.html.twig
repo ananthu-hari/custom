@@ -1,5 +1,9 @@
 <table id="usertable" class="table table-striped" style="width:100%">
+<<<<<<< HEAD
         <thead>
+=======
+  <thead>
+>>>>>>> repo/main
     <tr>
       {% for column in header %}
         <th>{{ column }}</th>
@@ -9,6 +13,7 @@
   <tbody>
     {% for row in rows %}
       <tr>
+<<<<<<< HEAD
         <td>{{ row.id }}</td>
         <td>{{ row.name }}</td>
         <td>{{ row.mail }}</td>
@@ -25,3 +30,19 @@
             </tr>
         </tfoot>
     </table>
+=======
+        {% for column in row %}
+          <td>{{ column }}</td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </tbody>
+  <tfoot>
+    <tr>
+      {% for column in header %}
+        <th>{{ column }}</th>
+      {% endfor %}
+    </tr>
+  </tfoot>
+</table>
+>>>>>>> repo/main
