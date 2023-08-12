@@ -1,0 +1,5 @@
+services:
+  surveymanager.route_subscriber:
+    class: Drupal\surveymanager\Routing\routesubscriber
+    tags:
+      - { name: event_subscriber }
